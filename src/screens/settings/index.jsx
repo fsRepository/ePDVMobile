@@ -1,4 +1,4 @@
-import { Input } from '@rneui/themed';
+import { Button, Input, Overlay } from '@rneui/themed';
 import React, { useState, useContext } from 'react';
 import { View, Text } from 'react-native';
 import * as C from './styles'
@@ -17,6 +17,7 @@ export default function Settings() {
         dateValid,
         setDateValid } = useContext(contextAuth)
 
+    const [openModal, setOpenModal] = useState(false)
     return (
         <C.Container>
             <Input
@@ -45,6 +46,7 @@ export default function Settings() {
                 value={dateValid}
                 onChangeText={(text) => setDateValid(text)}
             />
+
         </C.Container>
     )
 }

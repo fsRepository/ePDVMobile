@@ -3,13 +3,14 @@ import Colors from '../../../assets/colors.json'
 import { Animated } from 'react-native'
 export const HeaderFilter = styled.View`
 margin-top:10px;
+margin-bottom: ${props => (props.checkout.length > 0 ? '60px' : '0')};
+
 `
 export const Container = styled.View`
 flex:1;
 align-items:center;
 justify-content:center;
-margin-end:10;
-margin-start:10;
+
 
 
 `
@@ -33,7 +34,7 @@ font-size:20px;
 
 export const Groups = styled.TouchableOpacity`
 padding-horizontal:6px;
-background-color:#e6e6e6;
+background-color:'#e6e6e6';
 margin-left:6px;
 border-radius:6px;
 height:30px;

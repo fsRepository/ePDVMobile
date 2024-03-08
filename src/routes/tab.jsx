@@ -18,7 +18,10 @@ export default function TabRoute() {
 
         <tab.Navigator
             screenOptions={{
-                headerShown: false
+                headerShown: false,
+                tabBarLabelStyle: {
+                    color: 'black'
+                }
             }}
         >
             <tab.Screen name='settings' component={Settings}

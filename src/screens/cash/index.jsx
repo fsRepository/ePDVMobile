@@ -11,6 +11,7 @@ import { format } from 'date-fns';
 import { TextInputMask } from 'react-native-masked-text';
 import Setting from 'react-native-vector-icons/MaterialCommunityIcons'
 import Colors from '../../../assets/colors.json'
+import { useNavigation } from '@react-navigation/native';
 
 
 export default function Cash({ handleMenu }) {
@@ -28,10 +29,61 @@ export default function Cash({ handleMenu }) {
         { data: '2024-02-19', hora: '16:15', tipo: 'saida', saida: 300 }
     ];
 
+    //resumo de caixa
+    const caixaState = [
+        {
+            id: 1,
+            nome: "Vendas em Dinheiro",
+            valor: 500.00,
+        },
+        {
+            id: 2,
+            nome: "Cheque à Vista",
+            valor: 300.00,
+        },
+        {
+            id: 3,
+            nome: "Cheque a Prazo",
+            valor: 200.00,
+        },
+        {
+            id: 4,
+            nome: "Crediário",
+            valor: 400.00,
+        },
+        {
+            id: 5,
+            nome: "Cartão de Crédito",
+            valor: 600.00,
+        },
+        {
+            id: 6,
+            nome: "Cartão de Débito",
+            valor: 350.00,
+        },
+        {
+            id: 7,
+            nome: "Convênio",
+            valor: 150.00,
+        },
+        {
+            id: 8,
+            nome: "Financeira",
+            valor: 200.00,
+        },
+        {
+            id: 9,
+            nome: "Saídas",
+            valor: 1000.00
+        }
+    ];
+
+
 
     const [dateStart, setDateStart] = useState(new Date())
     const [dateEnd, setDateEnd] = useState(new Date())
     const [supp, setSupp] = useState('')
+    const navigation = useNavigation()
 
     //abre o modal de opções
     const [modalOptions, setModalOptions] = useState(false)
@@ -101,7 +153,13 @@ export default function Cash({ handleMenu }) {
                     <TouchableOpacity style={{ backgroundColor: "#e6e6e6", padding: 6, borderRadius: 6 }}>
                         <Text style={{ fontSize: 18, fontWeight: '500' }}>Relatório</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ backgroundColor: "#e6e6e6", padding: 6, borderRadius: 6 }}>
+                    <TouchableOpacity style={{ backgroundColor: "#e6e6e6", padding: 6, borderRadius: 6 }}
+                        onPress={() => {
+                            navigation.navigate('resume', { caixaState })
+                            setModalOptions(false)
+                        }}
+
+                    >
                         <Text style={{ fontSize: 18, fontWeight: '500' }}>Resumo</Text>
                     </TouchableOpacity>
                 </View>
@@ -112,8 +170,16 @@ export default function Cash({ handleMenu }) {
                 onBackdropPress={() => setOpenModal(!openModal)}
             >
                 <C.ModalCash>
-                    <C.Title>Fechar Caixa</C.Title>
-                    <C.Date>{FormatData(date)}</C.Date>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 20, justifyContent: 'center' }}>
+                        <C.Title>Fechar Caixa</C.Title>
+                        <C.Title>{FormatData(date)}</C.Title>
+                    </View>
+
+
+                    <Text style={{ fontSize: 16, marginTop: 10 }}>Valor disponivel no caixa: </Text>
+                    <Text style={{ fontSize: 25, fontWeight: '700' }}>R$135,50</Text>
+                    <Text style={{ fontSize: 18, marginTop: 10 }}>Sangria</Text>
+
                     <TextInputMask
                         style={{ width: 200, borderBottomColor: 'grey', borderBottomWidth: 1, fontSize: 20, textAlign: 'center', marginTop: 15 }}
                         type={'money'}
@@ -129,7 +195,7 @@ export default function Cash({ handleMenu }) {
 
                     />
                     <Button
-                        title='Gravar'
+                        title='Fechar Caixa'
                         buttonStyle={{ backgroundColor: Colors.orange, width: 200, marginTop: 20 }}
                     />
                 </C.ModalCash>

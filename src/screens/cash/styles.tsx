@@ -65,7 +65,7 @@ color:green;
 
 export const ModalCash = styled.View`
 width:300;
-height:200;
+height:250;
 align-items:center;
 
 
@@ -87,3 +87,10 @@ margin-top:10;
 
 `
 
+export const ResumeContainer = styled.View`
+
+margin-start:10;
+margin-end:10;
+
+
+`

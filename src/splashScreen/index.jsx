@@ -23,7 +23,7 @@ export default function SplashScreen() {
         <C.ContainerSplash>
 
             <C.Logo source={Logo} />
-            <C.TextLogo >ePDV</C.TextLogo>
+            <C.TextLogo >ePDV Smart</C.TextLogo>
 
 
             <LottieView

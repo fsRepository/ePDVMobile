@@ -4,10 +4,21 @@ import * as C from './../../screens/sell/styles'
 
 // import { Container } from './styles';
 
-export default function ProductsList({ item, setSelected, type }) {
+export default function ProductsList({ item, setSelected, type, selectionCounter, setSelectionCounter }) {
     return (
         <C.Products
-            onPress={() => setSelected(item)}
+            onPress={() => {
+                setSelected(item)
+                console.log(item)
+                if (type !== 'products') {
+                    setSelectionCounter(selectionCounter + 1)
+                    console.log(selectionCounter)
+                } else {
+
+                }
+
+            }}
+
         >
             <View>
                 <C.ProductText>{item.nome}</C.ProductText>

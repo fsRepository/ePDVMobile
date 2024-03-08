@@ -1,6 +1,6 @@
 import { Button, Input, TabView, Tab } from '@rneui/themed';
 import React, { useEffect, useState } from 'react';
-import { View, Text, KeyboardAvoidingView, Dimensions, Keyboard, TouchableWithoutFeedback, ActivityIndicator } from 'react-native';
+import { View, Text, KeyboardAvoidingView, Dimensions, Keyboard, TouchableWithoutFeedback, ActivityIndicator, ScrollView } from 'react-native';
 import User from 'react-native-vector-icons/FontAwesome5'
 import * as C from './styles'
 import Colors from './../../../../assets/colors.json'
@@ -10,6 +10,7 @@ import { TextInputMask } from 'react-native-masked-text';
 import { useToast } from 'react-native-toast-notifications';
 import axios from 'axios';
 import { useRoute } from '@react-navigation/native';
+import ChekIcon from 'react-native-vector-icons/AntDesign'
 
 export default function AddClient() {
     const [name, setName] = useState('')
@@ -151,52 +152,52 @@ export default function AddClient() {
 
                         <C.Page >
 
-
-                            <View >
-                                <User name='user-circle' size={80} color='grey' />
-                            </View>
-                            <C.Text>Adicionar Cliente</C.Text>
-                            <Input
-                                inputStyle={{ width: 350, borderBottomWidth: 1, borderColor: 'grey' }}
-                                containerStyle={{ width: 350 }}
-                                placeholder='Nome'
-                                value={name}
-                                onChangeText={(text) => setName(text)}
-                            />
-
-
-                            <TextInputMask
-                                style={{ width: 330, borderBottomWidth: 1, borderColor: 'black', fontSize: 18, marginBottom: 10 }}
-                                type={'cnpj'}
-                                value={cnpj}
-                                onChangeText={(text) => setCnpj(text)}
-                                placeholder='CNPJ'
+                            <ScrollView contentContainerStyle={{ alignItems: 'center' }}>
+                                <View >
+                                    <User name='user-circle' size={80} color='grey' />
+                                </View>
+                                <C.Text>Adicionar Cliente</C.Text>
+                                <Input
+                                    inputStyle={{ width: 350, borderBottomWidth: 1, borderColor: 'grey' }}
+                                    containerStyle={{ width: 350 }}
+                                    placeholder='Nome'
+                                    value={name}
+                                    onChangeText={(text) => setName(text)}
+                                />
 
 
-                            />
-                            <Input
-                                containerStyle={{ width: 350 }}
-                                inputStyle={{ width: 350, borderBottomWidth: 1, borderColor: 'grey' }}
-                                placeholder='Email'
-                                value={email}
-                                onChangeText={(text) => setEmail(text)}
-                            />
-                            <Input
-                                containerStyle={{ width: 350 }}
-                                inputStyle={{ width: 350, borderBottomWidth: 1, borderColor: 'grey' }}
-                                placeholder='Tipo de Pessoa'
-                                value={type}
-                                onChangeText={(text) => setType(text)}
-                            />
-                            <Input
-                                containerStyle={{ width: 350 }}
-                                inputStyle={{ width: 350, borderBottomWidth: 1, borderColor: 'grey' }}
-                                placeholder='Situação'
-                                value={situation}
-                                onChangeText={(text) => setSituation(text)}
-                            />
+                                <TextInputMask
+                                    style={{ width: 330, borderBottomWidth: 1, borderColor: 'black', fontSize: 18, marginBottom: 10 }}
+                                    type={'cnpj'}
+                                    value={cnpj}
+                                    onChangeText={(text) => setCnpj(text)}
+                                    placeholder='CNPJ'
 
 
+                                />
+                                <Input
+                                    containerStyle={{ width: 350 }}
+                                    inputStyle={{ width: 350, borderBottomWidth: 1, borderColor: 'grey' }}
+                                    placeholder='Email'
+                                    value={email}
+                                    onChangeText={(text) => setEmail(text)}
+                                />
+                                <Input
+                                    containerStyle={{ width: 350 }}
+                                    inputStyle={{ width: 350, borderBottomWidth: 1, borderColor: 'grey' }}
+                                    placeholder='Tipo de Pessoa'
+                                    value={type}
+                                    onChangeText={(text) => setType(text)}
+                                />
+                                <Input
+                                    containerStyle={{ width: 350 }}
+                                    inputStyle={{ width: 350, borderBottomWidth: 1, borderColor: 'grey' }}
+                                    placeholder='Situação'
+                                    value={situation}
+                                    onChangeText={(text) => setSituation(text)}
+                                />
+
+                            </ScrollView>
                         </C.Page>
                     </TouchableWithoutFeedback>
                 </TabView.Item>
@@ -205,74 +206,81 @@ export default function AddClient() {
 
 
                     <C.Page >
+                        <ScrollView contentContainerStyle={{ alignItems: 'center' }} showsVerticalScrollIndicator={false}>
+
+                            <View >
+                                <IconLocation name='location' size={80} color='grey' />
+                            </View>
+                            <C.Text>Adicionar Endereço</C.Text>
+                            <Input
+                                inputStyle={{ width: 350, borderBottomWidth: 1, borderColor: 'grey' }}
+                                containerStyle={{ width: 350 }}
+                                placeholder='Endereço'
+                                value={endereco}
+                                onChangeText={(text) => setEndereco(text)}
+                            />
 
 
-                        <View >
-                            <IconLocation name='location' size={80} color='grey' />
+
+                            <Input
+                                containerStyle={{ width: 350 }}
+                                inputStyle={{ width: 350, borderBottomWidth: 1, borderColor: 'grey' }}
+                                placeholder='Bairro'
+                                value={district}
+                                onChangeText={(text) => setDistrict(text)}
+                            />
+                            <Input
+                                containerStyle={{ width: 350 }}
+                                inputStyle={{ width: 350, borderBottomWidth: 1, borderColor: 'grey' }}
+                                placeholder='Numero'
+                                value={number}
+                                onChangeText={(text) => setNumber(text)}
+                            />
+                            <Input
+                                containerStyle={{ width: 350 }}
+                                inputStyle={{ width: 350, borderBottomWidth: 1, borderColor: 'grey' }}
+                                placeholder='Complemento'
+                                value={complement}
+                                onChangeText={(text) => setComplement(text)}
+                            />
+                            <Input
+                                containerStyle={{ width: 350 }}
+                                inputStyle={{ width: 350, borderBottomWidth: 1, borderColor: 'grey' }}
+                                placeholder='CEP'
+                                value={cep}
+                                keyboardType='numeric'
+                                onChangeText={(text) => setCep(text)}
+                            />
+
+                            <Input
+                                containerStyle={{ width: 350 }}
+                                inputStyle={{ width: 350, borderBottomWidth: 1, borderColor: 'grey' }}
+                                placeholder='Cidade'
+                                value={city}
+                                onChangeText={(text) => setCity(text)}
+                            />
+                            <Input
+                                containerStyle={{ width: 350 }}
+                                inputStyle={{ width: 350, borderBottomWidth: 1, borderColor: 'grey' }}
+                                placeholder='Estado'
+                                value={uf}
+                                onChangeText={(text) => setUf(text)}
+                            />
+
+                            <Button
+                                onPress={RegisterClient}
+                                title='Cadastrar Cliente'
+                                style={{ width: 200, borderRadius: 6 }}
+                                color={Colors.orange}
+                            />
+                        </ScrollView>
+                        <View style={{ position: 'absolute', left: 0, right: 0, bottom: -150 }}>
+                            <FAB
+                                color={Colors.orange}
+                                icon={<ChekIcon name='check' color='white' size={24} />}
+                            />
+
                         </View>
-                        <C.Text>Adicionar Endereço</C.Text>
-                        <Input
-                            inputStyle={{ width: 350, borderBottomWidth: 1, borderColor: 'grey' }}
-                            containerStyle={{ width: 350 }}
-                            placeholder='Endereço'
-                            value={endereco}
-                            onChangeText={(text) => setEndereco(text)}
-                        />
-
-
-
-                        <Input
-                            containerStyle={{ width: 350 }}
-                            inputStyle={{ width: 350, borderBottomWidth: 1, borderColor: 'grey' }}
-                            placeholder='Bairro'
-                            value={district}
-                            onChangeText={(text) => setDistrict(text)}
-                        />
-                        <Input
-                            containerStyle={{ width: 350 }}
-                            inputStyle={{ width: 350, borderBottomWidth: 1, borderColor: 'grey' }}
-                            placeholder='Numero'
-                            value={number}
-                            onChangeText={(text) => setNumber(text)}
-                        />
-                        <Input
-                            containerStyle={{ width: 350 }}
-                            inputStyle={{ width: 350, borderBottomWidth: 1, borderColor: 'grey' }}
-                            placeholder='Complemento'
-                            value={complement}
-                            onChangeText={(text) => setComplement(text)}
-                        />
-                        <Input
-                            containerStyle={{ width: 350 }}
-                            inputStyle={{ width: 350, borderBottomWidth: 1, borderColor: 'grey' }}
-                            placeholder='CEP'
-                            value={cep}
-                            keyboardType='numeric'
-                            onChangeText={(text) => setCep(text)}
-                        />
-
-                        <Input
-                            containerStyle={{ width: 350 }}
-                            inputStyle={{ width: 350, borderBottomWidth: 1, borderColor: 'grey' }}
-                            placeholder='Cidade'
-                            value={city}
-                            onChangeText={(text) => setCity(text)}
-                        />
-                        <Input
-                            containerStyle={{ width: 350 }}
-                            inputStyle={{ width: 350, borderBottomWidth: 1, borderColor: 'grey' }}
-                            placeholder='Estado'
-                            value={uf}
-                            onChangeText={(text) => setUf(text)}
-                        />
-
-                        <Button
-                            onPress={RegisterClient}
-                            title='Cadastrar Cliente'
-                            style={{ width: 200, borderRadius: 6 }}
-                            color={Colors.orange}
-                        />
-
                     </C.Page>
 
                 </TabView.Item>

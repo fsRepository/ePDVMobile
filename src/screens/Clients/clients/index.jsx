@@ -8,13 +8,16 @@ import RenderClients from '../../../components/listClients';
 import Icon2 from 'react-native-vector-icons/AntDesign';
 import Add from 'react-native-vector-icons/Ionicons'
 import Colors from '../../../../assets/colors.json'
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 // import { Container } from './styles';
 
 export default function Clients() {
     const [selectedFilter, setSelectedFilter] = useState('Nome')
     const [visible, setVisible] = useState(false)
     const navigation = useNavigation();
+    const route = useRoute()
+    const type = route.params ? route.params.type : null
+
     //banco de clientes producao 
     const clientes = [
         {
@@ -97,7 +100,6 @@ export default function Clients() {
         }
     ];
 
-    console.log(clientes);
 
     return (
         <C.Container>
@@ -133,16 +135,20 @@ export default function Clients() {
                 keyExtractor={(item, index) => item.codigo}
                 data={clientes}
                 renderItem={({ item }) =>
-                    <RenderClients item={item} />
+                    <RenderClients item={item} type2={type} />
                 }
             />
+            {type ?
+                '' :
 
-            <FAB
-                onPress={() => navigation.navigate('addclient')}
-                style={{ bottom: 20 }}
-                color={Colors.orange}
-                icon={<Add name='add' size={24} color='white' />}
-            />
+                <FAB
+                    onPress={() => navigation.navigate('addclient')}
+                    style={{ bottom: 20 }}
+                    color={Colors.orange}
+                    icon={<Add name='add' size={24} color='white' />}
+                />
+            }
+
 
 
         </C.Container>

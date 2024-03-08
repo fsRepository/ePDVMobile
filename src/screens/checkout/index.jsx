@@ -157,6 +157,7 @@ export default function Checkout() {
 
 
                 <C.ProductCheckout
+
                     onPress={() => {
                         setItemSelected(item)
                         setVisible(!visible)
@@ -211,9 +212,12 @@ export default function Checkout() {
         )
     }
     return (
-        <C.Container>
+        <C.Container
+
+        >
 
             <FlatList
+                showsVerticalScrollIndicator={false}
                 data={checkout}
                 keyExtractor={(item, index) => item.codigoDeBarras}
                 renderItem={({ item }) =>

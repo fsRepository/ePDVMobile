@@ -29,6 +29,10 @@ export default function Context({ children }) {
 
     const [producao, setProducao] = useState(false)
     const [homologacao, setHomologacao] = useState(false)
+
+    //
+    const [clientSelected, setClientSelected] = useState('')
+
     return (
 
         <contextAuth.Provider value={{
@@ -69,7 +73,9 @@ export default function Context({ children }) {
             producao,
             setProducao,
             setHomologacao,
-            homologacao
+            homologacao,
+            clientSelected,
+            setClientSelected
 
         }}>
             {children}

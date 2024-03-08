@@ -16,6 +16,7 @@ import Products from "../screens/products"
 import AddProducts from "../screens/products/addProducts"
 import Sellers from "../screens/sellers"
 import TesteImpressao from "../screens/impressao teste"
+import ResumeCash from "../screens/cash/resumeCash"
 
 export default function StackRoute() {
     const stack = createNativeStackNavigator()
@@ -35,7 +36,7 @@ export default function StackRoute() {
             />
             <stack.Screen component={Home} name='home'
                 options={{
-                    title: 'ePDV Mobile',
+                    title: 'ePDV Smart',
                     headerTintColor: 'white',
                     headerStyle: ({ backgroundColor: Colors.orange })
                 }}
@@ -125,6 +126,14 @@ export default function StackRoute() {
             <stack.Screen component={TesteImpressao} name='impressao'
                 options={{
                     title: 'impressao',
+                    headerTintColor: 'white',
+                    headerStyle: ({ backgroundColor: Colors.orange })
+
+                }}
+            />
+            <stack.Screen component={ResumeCash} name='resume'
+                options={{
+                    title: 'Resumo',
                     headerTintColor: 'white',
                     headerStyle: ({ backgroundColor: Colors.orange })
 

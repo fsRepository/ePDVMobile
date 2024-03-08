@@ -108,14 +108,14 @@ export default function PixScreen() {
                         type='cnpj'
                         value={pix}
                         onChangeText={(text) => setPix(text)}
-                        style={{ width: 400, borderColor: 'grey', borderBottomWidth: 1, fontSize: 16, marginTop: 10 }}
+                        style={{ width: 380, borderBottomWidth: 1, fontSize: 16, marginTop: 10, marginStart: 10, marginEnd: 10 }}
                     />
                     :
                     <Input
                         value={pix}
-                        onChangeText={text => setPix(text)}
+                        onChangeText={(text) => setPix(text)}
                         containerStyle={{ width: 400 }}
-                        inputStyle={{ fontSize: 16, borderBottomWidth: 0, width: 400 }}
+                        inputStyle={{ fontSize: 1, borderBottomWidth: 0, width: 400 }}
                     />
 
 

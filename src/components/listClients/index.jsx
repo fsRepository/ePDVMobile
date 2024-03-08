@@ -1,11 +1,12 @@
 import { Overlay } from '@rneui/themed';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text } from 'react-native';
 import OverlaySeller from '../overlaySellers';
 import * as C from './../../screens/Clients/clients/styles'
 
 // import { Container } from './styles';
 import { useNavigation } from '@react-navigation/native';
+import { contextAuth } from '../../context';
 
 export default function RenderClients({ item, type, name,
     setName,
@@ -15,9 +16,12 @@ export default function RenderClients({ item, type, name,
     setAtivo,
     inativo,
     setInativo,
-    itemSelected }) {
+    itemSelected,
+    type2
+}) {
     const [visible, setVisible] = useState(false)
     const [selected, setSelected] = useState('')
+    const { clientSelected, setClientSelected } = useContext(contextAuth)
     const navigation = useNavigation()
     return (
         type === 'sellers' ?
@@ -48,7 +52,15 @@ export default function RenderClients({ item, type, name,
                 </Overlay>
             </C.ListSellers> :
             <C.List
-                onPress={() => navigation.navigate('addclient', { item })}
+
+                onPress={() => {
+                    if (type2) {
+                        setClientSelected(item);
+                        navigation.navigate('confirm');
+                    } else {
+                        navigation.navigate('addclient', { item });
+                    }
+                }}
             >
                 <C.ItemText>00{item.codigo}</C.ItemText>
                 <C.ItemText>{item.nome}</C.ItemText>
